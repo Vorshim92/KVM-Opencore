@@ -18,7 +18,14 @@ jobs:
         run: |
           brew install nasm
           brew install --cask maciasl
-          brew install mtoc
+
+      - name: Build and install mtoc
+        run: |
+          git clone https://github.com/acidanthera/ocmtoc
+          cd ocmtoc
+          ./make-mtoc
+          sudo mv ./mtoc /usr/local/bin/mtoc
+          cd ..
 
       - name: Build project
         run: make
